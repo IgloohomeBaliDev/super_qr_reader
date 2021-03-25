@@ -153,7 +153,7 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
   }
 
   Future _scanImage() async {
-    stopScan();
+    // stopScan();
     PermissionStatus status = await Permission.camera.request();
     if (status == PermissionStatus.granted) {
       // var image = await ImagePicker().getImage(source: ImageSource.gallery);
@@ -161,10 +161,10 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
             count: 1,
             pickType: PickType.image,
           );
-      if (image == null) {
-        startScan();
-        return;
-      }
+      // if (image == null) {
+      //   startScan();
+      //   return;
+      // }
       final rest = await FlutterQrReader.imgScan(File(image[0].path));
       await widget.onScan(rest);
     } else {
